@@ -1,0 +1,402 @@
+/* ==UserStyle==
+@name       Better-TCU-Campusmate
+@version    20250404.08.18
+@namespace  ?
+==/UserStyle== */
+
+@-moz-document url-prefix("https://websrv.tcu.ac.jp/tcu_web_v3/") {
+/* 一般 */
+
+:root {
+  --tcu-blue-color: #18a9e8;
+}
+
+/* フォント変更 */
+body, #main, #sub1, #nav a, #footer .text{
+  font-family: "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", "verdana", sans-serif;
+}
+
+/* 装飾画像の削除 */
+/* 一部のアイコンとsvg画像は殺したくないため複雑な優先度設定 */
+#head_top, #head_base, #top_menu *, #head_right, #logout, #footer,
+#content * {
+    #weeklyPortletHeader * , input.wide{
+        background-image: none;
+    }
+    &:not(#weeklyPortletHeader *, input.wide, input.decorate, #content_navi>span.image, #slide>input.button) {
+      background-image: none !important;
+    }
+}
+
+/* ヘッダー */
+#head_right {
+
+  /* 文字サイズ大中小ボタン */
+  &:before {
+    content: "文字サイズ: ";
+    position: absolute;
+    top: 1em;
+  }
+
+  /* ログアウトボタン */
+  &>div.button>form {
+    display: inline-block;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ff6b6b; /* 朱色 */
+    /* ホバー時の色変更 */
+    &:hover { background-color: #ff5252; }
+    &:before {
+      content: "ログアウト";
+      position: absolute;
+      top: 0.7em;
+      right: 0.6em;
+      pointer-events: none;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
+#f_large, #f_middle, #f_small{ margin-top: 0.8em; }
+
+/* トップメニュー */
+#top_menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0.5em 1em;
+  gap: 1em;
+  background-color: var(--tcu-blue-color);
+  border-bottom: 1px solid #ddd;
+  width: auto;
+  & a {
+    color: #ffffff;
+    font-size: 1.1em;
+  }
+  /* 各メニュー項目の区切り線 */
+  &>ul>li:not(:last-child) {
+    border-right: 1px solid white;  /* 区切り線を白に */
+    padding-right: 1em;             /* 線と文字の間に余白を追加 */
+    margin-right: 1em;              /* 線の外側にも余白を追加 */
+  }
+}
+
+/* 週間スケジュール */
+
+#weekly {
+  & table { border-collapse: collapse; }
+  & td, & th {
+    border: 1px solid #b7b7b7;
+    &.out_line_x_b, &.out_line, &.out_line_y, &.out_line_x_t { border: none; }
+  }
+  & a {
+    text-decoration: none;
+    pointer-events: none;
+  }
+}
+
+/* 押すと怒られるボタンを非表示（最初からそうしとけよ） */
+#weeklyPortletHeader>div.base {
+  &>div.button_blk1>input,
+  &>div.button_blk2>div.button_weekly,
+  &>div.button_blk2>div.button_monthly { display: none; }
+}
+
+/* カレンダー移動ボタン */
+#LastWeekButton, #LastDayButton, #NextDayButton, #NextWeekButton, #date-pick{
+  cursor: pointer;
+  height: 24px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#date-pick, #ThisWeekButton{
+  border: 1px solid #b7b7b7;
+}
+
+#date-pick{
+  font-size: 12px;
+  border-radius: 0;
+  top: 14px;
+  left: 150px;
+  width: 150px;
+}
+
+#ThisWeekButton{
+  border-radius: 8px;
+  left: -30px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='48'><text x='34%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='12'>今週を表示</text></svg>") !important;
+}
+
+#LastWeekButton{
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='40%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13' textLength='23'>◁◁</text></svg>") !important;
+}
+
+#LastDayButton{
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='20%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13'>◁</text></svg>") !important;
+}
+
+#NextDayButton{
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='20%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13'>▷</text></svg>") !important;
+}
+
+#NextWeekButton{
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='48%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13' textLength='23'>▷▷</text></svg>") !important;
+}
+
+/* お知らせ掲示板 */
+#main>div:nth-child(5) {
+  background: #e6ffe6;
+  margin: 0px 10px 10px 0px;
+}
+
+#koprForm, #oaprForm, #opprForm, #t032dkprForm, #t032dgprForm {
+  &>div.title {
+    width: auto;
+    height: auto;
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    & td {
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+#koprForm > div.title { background-color: #008812; }
+#oaprForm > div.title { background-color: #a33bb3; }
+#opprForm > div.title { background-color: #ff3891; }
+#t032dkprForm > div.title { background-color: #00c41a; }
+#t032dgprForm > div.title { background-color: #cea40a; }
+
+#PrtlKoprPortlet, #WbasOaprPortlet, #WbasOpprPortlet, #T032DkprPortlet, #T032DgprPortlet{
+  & p {
+    margin-bottom: 1em;
+    margin-top: 0.5em;
+    &:before{
+      content: "▶ 全てを見る";
+      position: absolute;
+      pointer-events: none;
+      color: #000;
+      display: inline-block;
+      background-color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 5px;
+      width: 6.7em;
+    }
+  }
+}
+
+#box_r0_c0_0 { background-color: #fcf1ff; margin-bottom: 1em; }
+#box_r0_c1_0 { background-color: #fee; margin-bottom: 1em; }
+#box_r0_c0_1 { background-color: #e6ffea; }
+#box_r0_c1_1 { background-color: #fffae6;}
+
+#prtlkoprInf, .canceled_class .title, .public_inf, .personal_inf, .public_inf .title, .personal_inf .title{
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+#personal_wide, #public_wide, #daredemokyoin_wide, #daredemogakse_wide{
+  cursor: pointer;
+  border: 2px solid white;
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' fill='white'><text x='15%' y='19%' dominant-baseline='middle' text-anchor='middle' font-size='20'>⇗</text></svg>") !important;
+}
+
+/* サイドバー */
+
+/*#navigation {  border-right: 2px solid #e6e6e6; }*/
+
+/* ログイン情報ボックス */
+#login_inf {
+  border: 3px solid  var(--tcu-blue-color);
+  border-radius: 10px;
+  height: 90px;
+  top: 5px;
+  left: 25px;
+  width: 130px;
+  padding: 1px;
+  & > div.mid {
+    font-size: 0.8em;
+    &>ul>li.label { margin-left: 0;}
+    &>ul>li {        margin-left: 1em;    }
+
+
+    /* 日付 */
+    &>ul.date {
+      &>li.label:after {
+        content: "前回ログイン日時";
+        position: absolute;
+        text-decoration: underline;
+      }
+      & li:last-child { margin: 0; }
+      & li:not(:first-child) { display:inline; }
+    }
+
+    /* ユーザ名 */
+    &>ul.user>li.label:after {
+      content: "ログインユーザ";
+      position: absolute;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* サイドメニュー */
+#side_menu {
+  overflow: visible; /* closeボタンを上に伸ばすためにはみ出しを可視に */
+  /* メニュー項目 */
+  & .label {
+    background-color: var(--tcu-blue-color);
+    color: white !important;
+    width: 100%;
+  }
+}
+
+#sideMenuMiddle>ul>li {
+  margin: 2px !important;
+
+  & a {
+    padding-left: 10px !important;
+    width: 100% !important;
+
+    &:before {
+      content: "➤ ";
+      color: var(--tcu-blue-color);
+      font-size: 0.8em;
+    }
+
+    /* アクセス不能な項目はグレーアウト+小さく*/
+    &[href="#"][style*="cursor:default"]{
+      font-size: 0.7em;
+      color: gray;
+    }
+    /* ただの仕切りは非表示 */
+    &[title^="■"][title$="---"]{
+      display: none;      
+    }
+  }
+}
+
+/* closeボタン */
+#slide>input.button {
+  /*border: 1px solid black !important;*/
+  height: calc(100% + 70px) !important;
+  width: 16px !important;
+  top: -100px !important;
+  background-color: #e0f5ff !important;
+  border-radius: 8px !important;
+  /*background-color: #18a9e8 !important;*/
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='300' fill='gray'><text x='100%' y='-7' font-size='11' dominant-baseline='middle'  text-anchor='middle'  transform='rotate(90)' >↕ close / open ↕</text></svg>") !important;
+}
+
+#title{
+  background-color: var(--tcu-blue-color);
+  border-radius: 8px;
+  h2 { color: white;}
+}
+
+table.form>tbody>tr>td.label:before {
+          content: "◎ ";
+      color: #f2c18e;
+    position: absolute;
+    left: 45px;
+}
+
+table.form>tbody>tr>td.label_accent:before {
+          content: "◎ ";
+      color: #df3b19;
+    position: absolute;
+    left: 45px;
+}
+
+#wbasMsguForm table.form>tbody>tr>td.label_nodot>span.quenchShearing,
+#wbasMsguForm table.form>tbody>tr>td.item>span>input{
+    font-size: 0.85em;
+}
+
+table.list, table.form>tbody {
+    & td:not(.line_x), & th {
+        border-top: 1px solid gray;
+        /*border-bottom: 1px solid gray;*/
+    }
+}
+
+#form > div:nth-child(9) > table > tbody > tr:nth-child(1) > td:nth-child(3) > table > tbody td { border: none;}
+
+#content_navi>span.on {
+    border-radius: 50px;
+    background-color: #ffd000;
+}
+
+div.caption .image:before{
+    content: "！";
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--tcu-blue-color);
+}
+
+:has(#loginArea) {
+#side_menu{
+    left: 13px;
+}
+#slide>input.button {
+    left: -15px;
+}
+#loginArea {
+    position: absolute;
+    left: -20px !important;
+    top: 30px;
+}
+}
+
+/*#menu_list { display: block !important; }*/ /* メニューバー実験用 */
+
+#nav ul li a, #tabnavigation_list ul li, #tabnavigation_detail ul li {
+    background-color: #f5fffe;
+    &, &:hover {
+      border: 1px solid var(--tcu-blue-color);
+    }
+}
+
+#footer>div:before {
+    position: absolute;
+    content: "'I'⤵";
+    color: #e8e8e8;
+    top: -15px;
+    right: 24em;
+}
+}
+
+@-moz-document regexp("https://websrv.tcu.ac.jp/tcu_web_v3/.*menulv1=0000000005*") {
+/* リンク集を開いてしまった時に広々と表示 */
+#navigation {
+    left: 500px;
+    width: 450px !important;
+    background-color: white;
+    z-index: 10;
+}
+
+#side_menu, #side_menu ul, div.mid#sideMenuMiddle, #sideMenuMiddle ul, #side_menu li{
+    width: auto;
+}
+
+#slide>input.button {
+  pointer-events: none;
+  background-image: none !important;
+}
+
+#nav > li:nth-child(5) > a > span {
+    text-decoration: underline;
+}
+}
