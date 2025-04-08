@@ -297,6 +297,10 @@ body, #main, #sub1, #nav a, #footer .text{
     &[title^="■"][title$="---"]{
       display: none;      
     }
+      &:hover{
+          background-color: #effaff;
+          border-radius: 10px;
+      }
   }
 }
 
@@ -385,6 +389,49 @@ div.caption .image:before{
   color: #e8e8e8;
   top: -15px;
   right: 24em;
+}
+
+/* セッションタイムアウト画面 */
+:has(body>span.h4.line4[style="color:red"]){
+  /* 都市大ロゴ */
+  body{
+    background-image: url(https://www.tcu.ac.jp/tcucms/wp-content/themes/tcu/images/pc/cmn-logo.gif);
+    padding-top: 80px !important;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+
+  /* 中央寄せ */
+  body:has(a[href="./"]){
+    text-align: center;
+    span.h4.line4{ color: black !important; }
+
+    /* ログイン画面に戻るボタン */
+    a[href="./"]{
+      border-radius: 6px;
+      position: relative;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0 auto;
+      max-width: 400px;
+      padding: 10px 25px;
+      color: #FFF;
+      transition: 0.3s ease-in-out;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(270deg, rgb(101, 180, 255) 0%, var(--tcu-blue-color) 100%);
+      &:hover { background: linear-gradient(270deg, rgb(111, 185, 255) 0%, rgba(62,159,252,1) 100%); }
+      &:before {
+        content: ">";
+        font-size: 1.3em;
+       }
+      &:after {
+        content: "<";
+        font-size: 1.3em;
+      }
+    }
+
 }
 }
 
