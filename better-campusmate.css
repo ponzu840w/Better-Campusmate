@@ -86,8 +86,8 @@ body, #main, #sub1, #nav a, #footer .text{
   /* 各メニュー項目の区切り線 */
   &>ul>li:not(:last-child) {
     border-right: 1px solid white;  /* 区切り線を白に */
-    padding-right: 1em;             /* 線と文字の間に余白を追加 */
-    margin-right: 1em;              /* 線の外側にも余白を追加 */
+    padding-right: 0.5em;             /* 線と文字の間に余白を追加 */
+    margin-right: 0.5em;              /* 線の外側にも余白を追加 */
   }
 }
 
@@ -431,7 +431,7 @@ div.caption .image:before{
         font-size: 1.3em;
       }
     }
-
+  }
 }
 }
 
