@@ -239,7 +239,7 @@ body, #main, #sub1, #nav a, #footer .text{
   left: 25px;
   padding: 1px;
   & > div.mid {
-    font-size: 0.8em;
+    font-size: 0.7em;
     &>ul>li.label { margin-left: 0;}
     &>ul>li { margin-left: 1em; }
 
