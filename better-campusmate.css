@@ -344,8 +344,11 @@ table.list, table.form>tbody, table.detail {
     border-top: 1px solid gray;
   }
 }
+td.jikanwari_koma+td.line_y+td.jikanwari_koma {
+  border-bottom: 1px solid gray !important;
+}
 table.detail {
-  & td:not(.line_y, .line_y_label) {
+  & td:not(.line_y, .line_y_label), & tr.sayuu_bunkatu>td {
     border-left: 1px solid gray;
   }
 }
