@@ -339,9 +339,14 @@ table.form>tbody>tr>td {
 }
 
 /* テーブルのフチ */
-table.list, table.form>tbody {
-  & td:not(.line_x), & th {
+table.list, table.form>tbody, table.detail {
+  & td:not(.line_x, .line_y), & th {
     border-top: 1px solid gray;
+  }
+}
+table.detail {
+  & td:not(.line_y, .line_y_label) {
+    border-left: 1px solid gray;
   }
 }
 
