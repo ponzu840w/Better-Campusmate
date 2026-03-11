@@ -81,28 +81,19 @@ body, #main, #sub1, #nav a, #footer .text{
   width: auto;
   & a {
     color: #ffffff;
-    font-size: 1.1em;
+    font-size: 1em;
   }
   /* 各メニュー項目の区切り線 */
   &>ul>li:not(:last-child) {
     border-right: 1px solid white;  /* 区切り線を白に */
-    padding-right: 0.5em;             /* 線と文字の間に余白を追加 */
-    margin-right: 0.5em;              /* 線の外側にも余白を追加 */
+    padding-right: 0.2em;             /* 線と文字の間に余白を追加 */
+    margin-right: 0.2em;              /* 線の外側にも余白を追加 */
   }
 }
 
-/* 週間スケジュール */
-
-#weekly {
-  & table { border-collapse: collapse; }
-  & td, & th {
-    border: 1px solid #b7b7b7;
-    &.out_line_x_b, &.out_line, &.out_line_y, &.out_line_x_t { border: none; }
-  }
-  & a {
-    text-decoration: none;
-    pointer-events: none;
-  }
+/* 週間スケジュール どうせ機能していないので非表示 */
+#wbassdwrForm {
+  display: none;
 }
 
 /* 押すと怒られるボタンを非表示（最初からそうしとけよ） */
@@ -110,49 +101,6 @@ body, #main, #sub1, #nav a, #footer .text{
   &>div.button_blk1>input,
   &>div.button_blk2>div.button_weekly,
   &>div.button_blk2>div.button_monthly { display: none; }
-}
-
-/* カレンダー移動ボタン */
-#LastWeekButton, #LastDayButton, #NextDayButton, #NextWeekButton, #date-pick{
-  cursor: pointer;
-  height: 24px;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* 日付ピッカーと今週ボタンの枠 */
-#date-pick, #ThisWeekButton{ border: 1px solid #b7b7b7; }
-
-/* 日付ピッカー */
-#date-pick{
-  font-size: 12px;
-  border-radius: 0;
-  top: 14px;
-  left: 150px;
-  width: 150px;
-}
-
-/* 週間スケジュールのsvg */
-#ThisWeekButton{
-  border-radius: 8px;
-  left: -30px;
-  background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='48'><text x='34%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='12'>今週を表示</text></svg>") !important;
-}
-
-#LastWeekButton{
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='40%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13' textLength='23'>◁◁</text></svg>") !important;
-}
-
-#LastDayButton{
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='20%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13'>◁</text></svg>") !important;
-}
-
-#NextDayButton{
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='20%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13'>▷</text></svg>") !important;
-}
-
-#NextWeekButton{
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48'><text x='48%' y='25%' dominant-baseline='middle' text-anchor='middle' font-size='13' textLength='23'>▷▷</text></svg>") !important;
 }
 
 /* お知らせ掲示板 */
@@ -388,15 +336,6 @@ div.caption .image:before{
   &, &:hover {
     border: 1px solid var(--tcu-blue-color);
   }
-}
-
-/* 親切心 */
-#footer>div:before {
-  position: absolute;
-  content: "'I'⤵";
-  color: #e8e8e8;
-  top: -15px;
-  right: 24em;
 }
 
 /* セッションタイムアウト画面 */
